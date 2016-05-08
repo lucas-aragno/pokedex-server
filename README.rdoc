@@ -2,24 +2,24 @@
 
 * Install the gems:
 
-```bash
+```
 bundle install
 ```
 
 * Run the migrations:
 
-```bash
+```
 bundle exec rake db:migrate
 ```
 
 * Start the server:
 
-```bash
+```
 rails s
 ```
 
 **You can also check out the routes by running:**
 
-```bash
+```
 bundle exec rake routes
 ```
