@@ -11,7 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160508001238) do
+ActiveRecord::Schema.define(version: 20160618181258) do
+
+  create_table "card_collections", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.string   "set"
+    t.string   "image"
+    t.string   "rarity"
+    t.string   "card_uid"
+    t.string   "set_code"
+    t.string   "number"
+  end
+
+  create_table "cards_ownerships", force: :cascade do |t|
+    t.integer "card_id"
+    t.integer "ownership_id"
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  create_table "ownerships", force: :cascade do |t|
+    t.integer  "card_collection_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "card_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
@@ -41,5 +77,11 @@ ActiveRecord::Schema.define(version: 20160508001238) do
   add_index "users", ["email"], name: "index_users_on_email"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
+
+  create_table "wishlists", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
 
 end
